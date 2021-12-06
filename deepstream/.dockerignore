@@ -1,0 +1,4 @@
+**/*.sh
+*.md
+Dockerfile
+**/__pycache__
