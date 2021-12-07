@@ -70,7 +70,8 @@ cd /workspace/tensorrt/bin
 ```
 
 ## Get started
-Clone the repository to a local directory, e.g. `~/deepstream-python`.
+Clone the repository to a local directory, e.g. `~/deepstream-python`. 
+Be sure to run `git lfs pull` to download the files from LFS storage.
 
 First, build the container image by running the following command in the `deepstream/` directory:
 ```shell
