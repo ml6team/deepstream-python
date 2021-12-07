@@ -1,6 +1,32 @@
 # NVIDIA Deepstream Python boilerplate
 Boilerplate for building NVIDIA Deepstream pipelines in Python.
 
+## Repository structure
+This repository contains one base `Pipeline` class ([`deepstream/app/pipeline.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipeline.py)) and a number of custom pipeline subclasses ([`deepstream/app/pipelines/`](https://github.com/ml6team/deepstream-python/tree/master/deepstream/app/pipelines)) to perform various video analytics tasks:
+- `deepstream/app/pipeline.py`: Base class for all pipelines. Contains object detection and tracking. Any gstreamer supported input is accepted (file or RTSP URL). The output with bounding boxes is saved as a file or streamed to a RTSP server.
+- `deepstream/app/pipelines/anonymization.py`: Anonymization pipeline. This pipeline extends the base pipeline and blurs all objects belonging to a set of target classes.
+
+
+The files are structured as follows:
+- `app`: contains the base pipeline implementation as well as custom pipeline subclasses for various use cases.
+- `configs`: contains the Deepstream configuration files
+- `data`: contains the data such as models weights and videos
+
+```
+deepstream
+├── app
+│   ├── pipelines
+│   └── utils
+├── configs
+│   ├── pgies
+│   └── trackers
+└── data
+    ├── pgies
+    │   ├── yolov4
+    │   └── yolov4-tiny
+    └── videos
+```
+
 ## Development setup
 
 This project is based on the Deepstream 6.0 SDK and tested on an Ubuntu 20.04 VM with NVIDIA T4 GPU. Minor changes might be required for Jetson devices.
@@ -41,27 +67,6 @@ Inside the container:
 bash /opt/tensorrt/install_opensource.sh -b 21.06
 cd /workspace/tensorrt/bin
 ./trtexec --onnx=/trt/osnet_x0_25_msmt17.onnx --shapes=input:8x3x256x128 --minShapes=input:1x3x256x128 --maxShapes=input:32x3x256x128 --optShapes=input:8x3x256x128 --saveEngine=/trt/osnet_x0_25_msmt17.trt
-```
-
-## Repository structure
-The implementation of the Deepstream pipelines can be found in the `deepstream` directory:
-- `app`: contains the base pipeline implementation as well as custom pipeline subclasses for various use cases.
-- `configs`: contains the Deepstream configuration files
-- `data`: contains the data such as models weights and videos
-
-```
-deepstream
-├── app
-│   ├── pipelines
-│   └── utils
-├── configs
-│   ├── pgies
-│   └── trackers
-└── data
-    ├── pgies
-    │   ├── yolov4
-    │   └── yolov4-tiny
-    └── videos
 ```
 
 ## Get started
