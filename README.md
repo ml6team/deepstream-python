@@ -49,7 +49,7 @@ Setup Docker and the NVIDIA Container Toolkit following the [NVIDIA container to
 
 ### Models (optional)
 #### YOLOv4
-TODO
+YOLOv4 is now part of the TAO (Train, Adapt and Optimize) toolkit and can be used in Deepstream directly with the `.etlt` file (included via Git LFS).
 
 #### OSNet
 Download the desired `.pth` model weights from the [deep-person-reid](https://github.com/KaiyangZhou/deep-person-reid) model zoo. 
