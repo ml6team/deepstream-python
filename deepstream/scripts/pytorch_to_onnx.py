@@ -15,7 +15,7 @@ torch.onnx.export(
     model,
     dummy_input,
     onnx_path,
-    # dynamic_axes={"data": {0: "batch"}, "output": {0: "batch"}},
+    dynamic_axes={"data": {0: "batch"}, "output": {0: "batch"}},
     input_names=input_names,
     output_names=output_names,
 )
