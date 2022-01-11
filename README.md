@@ -49,7 +49,7 @@ nvidia-smi
 Setup Docker and the NVIDIA Container Toolkit following the [NVIDIA container toolkit install guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker).
 
 ### Models (optional)
-The instruction below describe how to obtain the model files. **These steps are optional as these model files are already included in the repository via Git LFS.**
+The instruction below describe how to obtain the model files. **These steps are optional as these model files are already included in the repository via [Git LFS](https://git-lfs.github.com/).**
 
 #### YOLOv4 (Object detection)
 YOLOv4 is now part of the TAO (Train, Adapt and Optimize) toolkit and can be used in Deepstream directly with the `.etlt` file.
