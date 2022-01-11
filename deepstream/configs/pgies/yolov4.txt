@@ -46,7 +46,7 @@ process-mode=1
 output-blob-names=BatchedNMS
 parse-bbox-func-name=NvDsInferParseCustomBatchedNMSTLT
 custom-lib-path=/app/data/pgies/libnvds_infercustomparser_tao.so
-filter-out-class-ids=0;1;3
+#filter-out-class-ids=0;1;3
 
 [class-attrs-all]
 pre-cluster-threshold=0.3
