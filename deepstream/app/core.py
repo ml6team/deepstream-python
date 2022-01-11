@@ -10,10 +10,9 @@ logging.basicConfig(level=LOGLEVEL)
 def run_pipeline(video_uri: str):
     pipeline = Pipeline(
         video_uri=video_uri,
-        pgie_config_path=os.path.join(CONFIGS_DIR, "pgies/pgie.txt"),
+        pgie_config_path=os.path.join(CONFIGS_DIR, "pgies/yolov4.txt"),
         tracker_config_path=os.path.join(CONFIGS_DIR, "trackers/nvdcf.txt"),
         output_format="mp4",
-        # input_shape=(640, 360),
     )
     pipeline.run()
 
@@ -22,7 +21,7 @@ def run_segmentation_pipeline(video_uri: str):
     pipeline = SegmentationPipeline(
         video_uri=video_uri,
         pgie_config_path=os.path.join(CONFIGS_DIR, "pgies/segmentation.txt"),
-        tracker_config_path=os.path.join(CONFIGS_DIR, "trackers/klt.txt"),
+        tracker_config_path=os.path.join(CONFIGS_DIR, "trackers/nvdcf.txt"),
         output_format="mp4",
     )
     pipeline.run()
