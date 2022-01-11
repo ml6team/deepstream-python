@@ -1,5 +1,5 @@
-# NVIDIA Deepstream Python boilerplate
-Boilerplate for building NVIDIA Deepstream pipelines in Python.
+# NVIDIA Deepstream 6.0 Python boilerplate
+Boilerplate for building NVIDIA Deepstream 6.0 pipelines in Python.
 
 ## Repository structure
 This repository contains one base `Pipeline` class ([`deepstream/app/pipeline.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipeline.py)) and a number of custom pipeline subclasses ([`deepstream/app/pipelines/`](https://github.com/ml6team/deepstream-python/tree/master/deepstream/app/pipelines)) to perform various video analytics tasks:
@@ -29,7 +29,7 @@ deepstream
 
 ## Development setup
 
-This project is based on the Deepstream 6.0 SDK and tested on an Ubuntu 20.04 VM with NVIDIA T4/P100 GPU. Minor changes might be required for Jetson devices.
+This project is based on the Deepstream 6.0 SDK and tested on an Ubuntu 20.04 VM with NVIDIA T4/P100 GPU (8vCPU, 30GB RAM). Minor changes might be required for Jetson devices.
 
 ### Prerequisites
 Install NVIDIA driver version 470.63.01:
@@ -115,10 +115,10 @@ gdb -ex r --args python3 run.py <URI>
 - https://github.com/NVIDIA-AI-IOT/deepstream_360_d_smart_parking_application/tree/master/tracker
 - https://github.com/NVIDIA-AI-IOT/deepstream-occupancy-analytics
 - https://developer.nvidia.com/blog/metropolis-spotlight-viisights-uses-ai-to-understand-behavior-and-predict-what-might-happen-next/
-- https://github.com/GoogleCloudPlatform/pubsub/tree/master/kafka-connector
 - https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps
 
 ## Caveats
+- When running the pipeline you may see an error like `ERROR: ../nvdsinfer/nvdsinfer_model_builder.cpp:1484 Deserialize engine failed because file path: /app/data/pgies/yolov4/yolov4_resnet18.etlt_b1_gpu0_fp32.engine open error`. This means the `.engine` file is not present. You can ignore this error as Deepstream will generate this file for you (if an alternative model file such as `.etlt` or `.onnx` is present).
 - Absolute paths are not allowed for some values in config files. See https://forums.developer.nvidia.com/t/model-engine-error-deepstream-test1-python-bindings/155035/6
 - The paths in the sample Python app config files are relative. See https://forums.developer.nvidia.com/t/cannot-run-deepstream-test-1-in-deepstream-python-apps-where-is-the-samples-folder/156010/5
 - Sometimes the NVIDIA driver will randomly stop working. When executing `nvidia-smi` a message will appear indicating the driver cannot be loaded. A simple reinstallation of the driver usually fixes this.
