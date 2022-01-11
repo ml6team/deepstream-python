@@ -1,11 +1,10 @@
 [property]
 gpu-id=0
 onnx-file=/app/data/sgies/osnet/osnet_x0_25_msmt17.onnx
-model-file=/app/data/sgies/osnet/osnet_x0_25_msmt17.trt
+model-engine-file=/app/data/sgies/osnet/osnet_x0_25_msmt17.trt
 force-implicit-batch-dim=0
 batch-size=8
 process-mode=2
-gie-mode=2
 network-mode=2
 interval=0
 gie-unique-id=2
