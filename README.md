@@ -2,9 +2,11 @@
 Boilerplate for building NVIDIA Deepstream 6.0 pipelines in Python.
 
 ## Repository structure
-This repository contains one base `Pipeline` class ([`deepstream/app/pipeline.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipeline.py)) and a number of custom pipeline subclasses ([`deepstream/app/pipelines/`](https://github.com/ml6team/deepstream-python/tree/master/deepstream/app/pipelines)) to perform various video analytics tasks:
-- `deepstream/app/pipeline.py`: Base class for all pipelines. Contains object detection and tracking. Any gstreamer supported input is accepted (file or RTSP URL). The output with bounding boxes is saved as a file or streamed to a RTSP server.
-- `deepstream/app/pipelines/anonymization.py`: Anonymization pipeline. This pipeline extends the base pipeline and blurs all objects belonging to a set of target classes.
+This repository contains one base `Pipeline` class and a number of custom pipeline subclasses ([`deepstream/app/pipelines/`](https://github.com/ml6team/deepstream-python/tree/master/deepstream/app/pipelines)) to perform various video analytics tasks:
+- [`deepstream/app/pipeline.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipeline.py): Base class for all pipelines. Contains object detection and tracking (e.g. *YOLOv4* with *DeepSORT*). Any gstreamer supported input is accepted (file or RTSP URL). The output with bounding boxes is saved as a file or streamed to a RTSP server.
+- [`deepstream/app/pipelines/anonymization.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipelines/anonymization.py): Anonymization pipeline. This pipeline extends the base pipeline and blurs all objects belonging to a set of target classes.
+- [`deepstream/app/pipelines/segmentation.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipelines/segmentation.py): Semantic segmentation.
+- [`deepstream/app/pipelines/re_identification.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipelines/re_identification.py): People tracking and re-identification feature extraction with [OSNet](https://github.com/KaiyangZhou/deep-person-reid).
 
 
 The files are structured as follows:
@@ -77,7 +79,7 @@ Clone the repository to a local directory, e.g. `~/deepstream-python`:
 ```shell
 git clone https://github.com/ml6team/deepstream-python.git
 ```
-Be sure to run `git lfs pull` afterwards to download the files from LFS storage.
+Be sure to run `git lfs pull` afterwards to download the files from LFS storage:
 ```shell
 sudo apt install git-lfs
 cd deepstream-python
@@ -85,7 +87,7 @@ git lfs install
 git lfs pull
 ```
 
-Build the container image by running the following command in the `deepstream/` directory:
+Build the container image by running the following command inside the `deepstream/` directory (where the Dockerfile is located):
 ```shell
 docker build -t deepstream .
 ```
