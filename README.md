@@ -1,5 +1,5 @@
-# NVIDIA Deepstream Python boilerplate
-Boilerplate for building NVIDIA Deepstream pipelines in Python.
+# NVIDIA Deepstream 6.0 Python boilerplate
+Boilerplate for building NVIDIA Deepstream 6.0 pipelines in Python.
 
 ## Repository structure
 This repository contains one base `Pipeline` class ([`deepstream/app/pipeline.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipeline.py)) and a number of custom pipeline subclasses ([`deepstream/app/pipelines/`](https://github.com/ml6team/deepstream-python/tree/master/deepstream/app/pipelines)) to perform various video analytics tasks:
@@ -29,11 +29,12 @@ deepstream
 
 ## Development setup
 
-This project is based on the Deepstream 6.0 SDK and tested on an Ubuntu 20.04 VM with NVIDIA T4 GPU. Minor changes might be required for Jetson devices.
+This project is based on the Deepstream 6.0 SDK and tested on an Ubuntu 20.04 VM with NVIDIA T4/P100 GPU (8vCPU, 30GB RAM). Minor changes might be required for Jetson devices.
 
 ### Prerequisites
 Install NVIDIA driver version 470.63.01:
 ```shell
+sudo apt update
 sudo apt install gcc make
 curl -O https://us.download.nvidia.com/XFree86/Linux-x86_64/470.63.01/NVIDIA-Linux-x86_64-470.63.01.run
 chmod 755 NVIDIA-Linux-x86_64-470.63.01.run
@@ -48,10 +49,12 @@ nvidia-smi
 Setup Docker and the NVIDIA Container Toolkit following the [NVIDIA container toolkit install guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker).
 
 ### Models (optional)
-#### YOLOv4
-YOLOv4 is now part of the TAO (Train, Adapt and Optimize) toolkit and can be used in Deepstream directly with the `.etlt` file (included via Git LFS).
+The instruction below describe how to obtain the model files. **These steps are optional as these model files are already included in the repository via [Git LFS](https://git-lfs.github.com/).**
 
-#### OSNet
+#### YOLOv4 (Object detection)
+YOLOv4 is now part of the TAO (Train, Adapt and Optimize) toolkit and can be used in Deepstream directly with the `.etlt` file.
+
+#### OSNet (Re-identification)
 Download the desired `.pth` model weights from the [deep-person-reid](https://github.com/KaiyangZhou/deep-person-reid) model zoo. 
 Convert the Pytorch model to ONNX using `deepstream/scripts/pytorch_to_onnx.py`
 
@@ -70,10 +73,19 @@ cd /workspace/tensorrt/bin
 ```
 
 ## Get started
-Clone the repository to a local directory, e.g. `~/deepstream-python`. 
-Be sure to run `git lfs pull` to download the files from LFS storage.
+Clone the repository to a local directory, e.g. `~/deepstream-python`:
+```shell
+git clone https://github.com/ml6team/deepstream-python.git
+```
+Be sure to run `git lfs pull` afterwards to download the files from LFS storage.
+```shell
+sudo apt install git-lfs
+cd deepstream-python
+git lfs install
+git lfs pull
+```
 
-First, build the container image by running the following command in the `deepstream/` directory:
+Build the container image by running the following command in the `deepstream/` directory:
 ```shell
 docker build -t deepstream .
 ```
@@ -88,6 +100,7 @@ For example:
 ```shell
 docker run -it --gpus all -v ~/deepstream-python/output:/app/output deepstream python3 run.py 'file:///app/data/videos/sample_720p.h264'
 ```
+The `-v` option mounts the output directory to the container. After the pipeline is run, `deepstream-python/output` will contain the results. For the base pipeline, this is a video (`out.mp4`) with bounding boxes drawn.
 
 ## Debugging
 The Deepstream Docker container already contains [gdb](https://www.gnu.org/software/gdb/). You can use it as follows inside the container:
@@ -102,10 +115,13 @@ gdb -ex r --args python3 run.py <URI>
 - https://github.com/NVIDIA-AI-IOT/deepstream_360_d_smart_parking_application/tree/master/tracker
 - https://github.com/NVIDIA-AI-IOT/deepstream-occupancy-analytics
 - https://developer.nvidia.com/blog/metropolis-spotlight-viisights-uses-ai-to-understand-behavior-and-predict-what-might-happen-next/
-- https://github.com/GoogleCloudPlatform/pubsub/tree/master/kafka-connector
 - https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps
 
 ## Caveats
+- When running the pipeline you may see an error like `ERROR: ../nvdsinfer/nvdsinfer_model_builder.cpp:1484 Deserialize engine failed because file path: /app/data/pgies/yolov4/yolov4_resnet18.etlt_b1_gpu0_fp32.engine open error`. This means the `.engine` file is not present. You can ignore this error as Deepstream will generate this file for you (if an alternative model file such as `.etlt` or `.onnx` is present).
 - Absolute paths are not allowed for some values in config files. See https://forums.developer.nvidia.com/t/model-engine-error-deepstream-test1-python-bindings/155035/6
 - The paths in the sample Python app config files are relative. See https://forums.developer.nvidia.com/t/cannot-run-deepstream-test-1-in-deepstream-python-apps-where-is-the-samples-folder/156010/5
 - Sometimes the NVIDIA driver will randomly stop working. When executing `nvidia-smi` a message will appear indicating the driver cannot be loaded. A simple reinstallation of the driver usually fixes this.
+
+## Contact
+- [Jules Talloen](https://julestalloen.eu/) - \<first name>[dot]\<last name>[at]ml6.eu
