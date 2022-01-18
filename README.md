@@ -1,5 +1,6 @@
 # NVIDIA Deepstream 6.0 Python boilerplate
 Boilerplate for building NVIDIA Deepstream 6.0 pipelines in Python.
+📖[Related blogpost](https://blog.ml6.eu/getting-started-with-custom-nvidia-deepstream-6-0-pipelines-in-python-935154dd9237)
 
 ## Repository structure
 This repository contains one base `Pipeline` class and a number of custom pipeline subclasses ([`deepstream/app/pipelines/`](https://github.com/ml6team/deepstream-python/tree/master/deepstream/app/pipelines)) to perform various video analytics tasks:
