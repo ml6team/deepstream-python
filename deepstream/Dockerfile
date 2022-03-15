@@ -26,7 +26,7 @@ RUN cd /opt/nvidia/deepstream/deepstream/sources/apps/ \
     && cd build \
     && cmake .. \
     && make \
-    && pip3 install ./pyds-1.1.0-py3-none*.whl
+    && pip3 install ./pyds-1.1.1-py3-none*.whl
 
 # RTSP
 RUN apt-get install -y libgstrtspserver-1.0-0 gstreamer1.0-rtsp libgirepository1.0-dev gobject-introspection gir1.2-gst-rtsp-server-1.0
