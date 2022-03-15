@@ -36,7 +36,7 @@ TILED_OUTPUT_HEIGHT = 1080
 class Pipeline:
 
     def __init__(self, *, video_uri: str, output_video_path: str = None,
-                 pgie_config_path: str = os.path.join(CONFIGS_DIR, "pgies/yolov4-tiny.txt"),
+                 pgie_config_path: str = os.path.join(CONFIGS_DIR, "pgies/pgie.txt"),
                  tracker_config_path: str = os.path.join(CONFIGS_DIR, "trackers/nvdcf.txt"),
                  enable_osd: bool = True, write_osd_analytics: bool = True,
                  save_crops: bool = False, output_format: str = "mp4", rtsp_codec: str = "H265",
