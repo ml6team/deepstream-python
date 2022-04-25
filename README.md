@@ -2,6 +2,8 @@
 Boilerplate for building NVIDIA Deepstream 6.0 pipelines in Python.
 📖[Related blogpost](https://blog.ml6.eu/getting-started-with-custom-nvidia-deepstream-6-0-pipelines-in-python-935154dd9237)
 
+![sample output](docs/assets/pgie-nvdcf.gif)
+
 ## Repository structure
 This repository contains one base `Pipeline` class and a number of custom pipeline subclasses ([`deepstream/app/pipelines/`](https://github.com/ml6team/deepstream-python/tree/master/deepstream/app/pipelines)) to perform various video analytics tasks:
 - [`deepstream/app/pipeline.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipeline.py): Base class for all pipelines. Contains object detection and tracking (e.g. *YOLOv4* with *DeepSORT*). Any gstreamer supported input is accepted (file or RTSP URL). The output with bounding boxes is saved as a file or streamed to a RTSP server.
