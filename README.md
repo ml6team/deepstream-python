@@ -5,7 +5,9 @@ Boilerplate for building NVIDIA Deepstream 6.0 pipelines in Python.
 ## Repository structure
 This repository contains one base `Pipeline` class and a number of custom pipeline subclasses ([`deepstream/app/pipelines/`](https://github.com/ml6team/deepstream-python/tree/master/deepstream/app/pipelines)) to perform various video analytics tasks:
 - [`deepstream/app/pipeline.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipeline.py): Base class for all pipelines. Contains object detection and tracking (e.g. *YOLOv4* with *DeepSORT*). Any gstreamer supported input is accepted (file or RTSP URL). The output with bounding boxes is saved as a file or streamed to a RTSP server.
+ ![sample output](docs/assets/pgie-nvdcf.gif)
 - [`deepstream/app/pipelines/anonymization.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipelines/anonymization.py): **Anonymization** pipeline. This pipeline extends the base pipeline and blurs all objects belonging to a set of target classes.
+ ![sample blurring output](docs/assets/yolov4-nvdcf-blurring.gif)
 - [`deepstream/app/pipelines/segmentation.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipelines/segmentation.py): **Semantic segmentation**.
 - [`deepstream/app/pipelines/re_identification.py`](https://github.com/ml6team/deepstream-python/blob/master/deepstream/app/pipelines/re_identification.py): People tracking and **re-identification** feature extraction with [OSNet](https://github.com/KaiyangZhou/deep-person-reid).
 
