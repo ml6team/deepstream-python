@@ -82,13 +82,8 @@ Clone the repository to a local directory, e.g. `~/deepstream-python`:
 ```shell
 git clone https://github.com/ml6team/deepstream-python.git
 ```
-Be sure to run `git lfs pull` afterwards to download the files from LFS storage:
-```shell
-sudo apt install git-lfs
-cd deepstream-python
-git lfs install
-git lfs pull
-```
+
+Download the data folder from [Google Drive](https://drive.google.com/file/d/1xu22FTWw0Cx4bOgrKUVtZU1VMHt3Oml8/view?usp=sharing) and add it to the root of the repository.
 
 Build the container image by running the following command inside the `deepstream/` directory (where the Dockerfile is located):
 ```shell
