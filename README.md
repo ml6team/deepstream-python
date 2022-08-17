@@ -1,5 +1,5 @@
-# NVIDIA Deepstream 6.0 Python boilerplate
-Boilerplate for building NVIDIA Deepstream 6.0 pipelines in Python.
+# NVIDIA Deepstream 6.1 Python boilerplate
+Boilerplate for building NVIDIA Deepstream 6.1 pipelines in Python.
 📖[Related blogpost](https://blog.ml6.eu/getting-started-with-custom-nvidia-deepstream-6-0-pipelines-in-python-935154dd9237)
 
 ## Repository structure
@@ -34,16 +34,16 @@ deepstream
 
 ## Development setup
 
-This project is based on the Deepstream 6.0 SDK and tested on an Ubuntu 20.04 VM with NVIDIA T4/P100 GPU (8vCPU, 30GB RAM). Minor changes might be required for Jetson devices.
+This project is based on the Deepstream 6.1 SDK and tested on an Ubuntu 20.04 VM with NVIDIA T4/P100 GPU (8vCPU, 30GB RAM). Minor changes might be required for Jetson devices.
 
 ### Prerequisites
-Install NVIDIA driver version 470.63.01:
+Install NVIDIA driver version 510.47.03:
 ```shell
 sudo apt update
 sudo apt install gcc make
-curl -O https://us.download.nvidia.com/XFree86/Linux-x86_64/470.63.01/NVIDIA-Linux-x86_64-470.63.01.run
-chmod 755 NVIDIA-Linux-x86_64-470.63.01.run
-sudo ./NVIDIA-Linux-x86_64-470.63.01.run
+curl -O https://us.download.nvidia.com/XFree86/Linux-x86_64/510.47.03/NVIDIA-Linux-x86_64-510.47.03.run
+chmod 755 NVIDIA-Linux-x86_64-510.47.03.run
+sudo ./NVIDIA-Linux-x86_64-510.47.03.run
 ```
 
 Verify the installation with:
