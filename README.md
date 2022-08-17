@@ -83,7 +83,12 @@ Clone the repository to a local directory, e.g. `~/deepstream-python`:
 git clone https://github.com/ml6team/deepstream-python.git
 ```
 
-Download the data folder from [Google Drive](https://drive.google.com/file/d/1xu22FTWw0Cx4bOgrKUVtZU1VMHt3Oml8/view?usp=sharing) and add it to the root of the repository.
+Download the data folder from [Google Drive](https://drive.google.com/u/0/uc?id=1xu22FTWw0Cx4bOgrKUVtZU1VMHt3Oml8&export=download) and add it to the root of the repository. For example using [gdown](https://github.com/wkentaro/gdown) (inside the `deepstream/` directory):
+```shell
+pip3 install gdown
+gdown https://drive.google.com/u/0/uc?id=1xu22FTWw0Cx4bOgrKUVtZU1VMHt3Oml8&export=download
+unzip data.zip
+```
 
 Build the container image by running the following command inside the `deepstream/` directory (where the Dockerfile is located):
 ```shell
