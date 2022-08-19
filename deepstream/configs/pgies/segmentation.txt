@@ -61,8 +61,8 @@
 gpu-id=0
 net-scale-factor=1.0
 model-color-format=0
-uff-file=/opt/nvidia/deepstream/deepstream-6.0/samples/models/Segmentation/semantic/unetres18_v4_pruned0.65_800_data.uff
-model-engine-file=../opt/nvidia/deepstream/deepstream-6.0/samples/models/Segmentation/semantic/unetres18_v4_pruned0.65_800_data.uff_b1_gpu0_fp32.engine
+uff-file=/opt/nvidia/deepstream/deepstream-6.1/samples/models/Segmentation/semantic/unetres18_v4_pruned0.65_800_data.uff
+model-engine-file=../opt/nvidia/deepstream/deepstream-6.1/samples/models/Segmentation/semantic/unetres18_v4_pruned0.65_800_data.uff_b1_gpu0_fp32.engine
 infer-dims=3;512;512
 uff-input-order=0
 uff-input-blob-name=data

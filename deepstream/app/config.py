@@ -1,6 +1,6 @@
 import os
 
-DEEPSTREAM_DIR = "/opt/nvidia/deepstream/deepstream-6.0"
+DEEPSTREAM_DIR = "/opt/nvidia/deepstream/deepstream-6.1"
 LOGLEVEL = os.environ.get("LOGLEVEL", "INFO")
 PATH = os.path.dirname(os.path.abspath(__file__))
 CONFIGS_DIR = os.path.join(PATH, "..", "configs")
